@@ -6,11 +6,14 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+const errorController = require('./controller/error');
+
 const adminroutes = require('./routes/admin');
 
 const shoproutes = require('./routes/shop');
 
 const contactroutes = require('./routes/contactus');
+
 
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -22,8 +25,6 @@ app.use(shoproutes);
 
 app.use (contactroutes);
 
-app.use((req, res, next)=>{
-    res.status(404).sendFile(path.join(__dirname, '../', 'views', '404.html'));
-})
+app.use(errorController.get404Page);
 
 app.listen(3000);
