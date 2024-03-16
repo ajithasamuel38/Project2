@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+
 const errorController = require('./controller/error');
 
 const adminroutes = require('./routes/admin');
@@ -25,6 +26,6 @@ app.use(shoproutes);
 
 app.use (contactroutes);
 
-app.use(errorController.get404Page);
+app.use(errorController.get404PageFile);
 
 app.listen(3000);
